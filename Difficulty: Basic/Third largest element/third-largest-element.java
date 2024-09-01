@@ -40,13 +40,12 @@ public class Main {
 class Solution {
     int thirdLargest(int arr[]) {
         // Your code here
-        if(arr.length>=3)
+        if(arr.length >= 3)
         {
             Arrays.sort(arr);
-            int thirdLargest = arr[arr.length-3];
-            return thirdLargest;
+            return arr[arr.length-3];
         }
-        else 
+        else
             return -1;
         
     }
