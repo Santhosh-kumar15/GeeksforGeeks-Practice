@@ -41,19 +41,19 @@ class Solution
   static void insert(int arr[],int i)
   {
        // Your code here
-       while(i>0 && arr[i-1] > arr[i])
+       while(i > 0 && arr[i-1] > arr[i])
        {
-           int temp = arr[i];
-           arr[i] = arr[i-1];
-           arr[i-1] = temp;
+           int temp = arr[i-1];
+           arr[i-1] = arr[i];
+           arr[i] = temp;
            i--;
        }
   }
   //Function to sort the array using insertion sort algorithm.
   public void insertionSort(int arr[], int n)
   {
-      //cod
-      for(int i=0;i<=n-1;i++)
+      //code here
+      for(int i = 0; i <= n-1; i++)
       {
           insert(arr, i);
       }
