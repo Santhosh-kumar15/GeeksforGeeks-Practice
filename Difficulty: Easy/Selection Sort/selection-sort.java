@@ -39,8 +39,10 @@ class Solution
         int min = i;
         for(int j = i; j <= arr.length-1; j++)
         {
-            if(arr[j]<arr[min])
+            if(arr[j] < arr[min])
+            {
                 min = j;
+            }
         }
         return min;
 	}
@@ -48,9 +50,10 @@ class Solution
 	void selectionSort(int arr[], int n)
 	{
 	    //code here
-	    for(int i = 0; i <=n-2; i++)
+	    int mini;
+	    for(int i = 0; i <= n-2; i++)
 	    {
-	        int mini = select(arr, i);
+	        mini = select(arr, i);
 	        int temp = arr[mini];
 	        arr[mini] = arr[i];
 	        arr[i] = temp;
