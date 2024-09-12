@@ -37,26 +37,25 @@ class Solution
     static void quickSort(int arr[], int low, int high)
     {
         // code here
-        if(low<high)
-        {
-            int partitionIndex = partition(arr, low, high);
-            quickSort(arr, low, partitionIndex-1);
-            quickSort(arr, partitionIndex+1, high);
+        if(low<high){
+        int partitionIndex = partition(arr, low, high);
+        quickSort(arr, low, partitionIndex-1);
+        quickSort(arr, partitionIndex+1, high);
         }
     }
     static int partition(int arr[], int low, int high)
     {
         // your code here
-        int pivot = arr[low];
         int i = low;
         int j = high;
+        int pivot = arr[high];
         while(i<j)
         {
-            while(arr[i]<=pivot && i<=high-1)
+            while(arr[i] <= pivot && i <= high-1)
             {
                 i++;
             }
-            while(arr[j]>=pivot && j>=low+1)
+            while(arr[j] >= pivot &&  j >= low+1)
             {
                 j--;
             }
@@ -67,9 +66,9 @@ class Solution
                 arr[j] = temp;
             }
         }
-        int temp = arr[low];
-        arr[low] = arr[j];
-        arr[j] = temp;
-        return j;
+        int temp = arr[high];
+        arr[high] = arr[i];
+        arr[i] = temp;
+        return i;
     } 
 }
