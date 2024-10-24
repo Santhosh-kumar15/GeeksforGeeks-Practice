@@ -14,7 +14,9 @@ class GFG {
 
             Solution ob = new Solution();
             System.out.println(ob.isPerfectNumber(N));
-        }
+        
+System.out.println("~");
+}
     }
 }
 // } Driver Code Ends
@@ -25,7 +27,6 @@ class GFG {
 class Solution {
     static int isPerfectNumber(long N) {
         // code here
-        long temp = N;
         long sum = 0;
         for(int i = 1; i < Math.sqrt(N); i++)
         {
@@ -33,10 +34,12 @@ class Solution {
             {
                 sum += i;
                 if(N != N/i)
-                    sum += N / i;
+                {
+                    sum += N/i;
+                }
             }
         }
-        if(sum == temp)
+        if(N == sum)
             return 1;
         else
             return 0;
