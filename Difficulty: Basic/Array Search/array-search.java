@@ -21,7 +21,9 @@ class Main {
             Solution obj = new Solution();
 
             System.out.println(obj.search(nums, x));
-        }
+        
+System.out.println("~");
+}
     }
 }
 // } Driver Code Ends
@@ -32,11 +34,15 @@ class Solution {
     static int search(int arr[], int x) {
 
         // Your code here
+        int index = -1;
         for(int i = 0; i < arr.length; i++)
         {
             if(arr[i] == x)
-                return i;
+            {
+                index = i;
+                break;
+            }
         }
-        return -1;
+        return index;
     }
 }
