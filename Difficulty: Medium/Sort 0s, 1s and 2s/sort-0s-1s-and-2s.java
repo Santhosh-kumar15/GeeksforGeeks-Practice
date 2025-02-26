@@ -11,11 +11,9 @@ class GFG {
         while (t-- > 0) {
             String input = br.readLine();
             String[] inputArray = input.split("\\s+");
-            ArrayList<Integer> a = new ArrayList<>();
+            int a[] = new int[inputArray.length];
 
-            for (String s : inputArray) {
-                a.add(Integer.parseInt(s));
-            }
+            for (int i = 0; i < a.length; i++) a[i] = Integer.parseInt(inputArray[i]);
 
             Solution ob = new Solution();
             ob.sort012(a);
@@ -24,41 +22,48 @@ class GFG {
                 System.out.print(num + " ");
             }
             System.out.println();
+            System.out.println("~");
         }
     }
 }
 
-// } Driver Code Ends
 
+// } Driver Code Ends
 
 class Solution {
     // Function to sort an array of 0s, 1s, and 2s
-    public void sort012(ArrayList<Integer> arr) {
+    public void sort012(int[] arr) {
         // code here
         int mid = 0;
         int low = 0;
-        int high = arr.size() - 1;
+        int high = arr.length - 1;
         while(mid <= high)
         {
-            if(arr.get(mid) == 0)
+            if(arr[mid] == 0)
             {
                 swap(arr, mid, low);
                 mid++;
                 low++;
             }
-            else if(arr.get(mid) == 1)
+            else if(arr[mid] == 1)
+            {
                 mid++;
-            else if(arr.get(mid) == 2)
+            }
+            else if(arr[mid] == 2)
             {
                 swap(arr, mid, high);
                 high--;
             }
         }
     }
-    public static void swap(ArrayList<Integer> arr, int i, int j)
+    public static void swap(int[] arr, int x, int y)
     {
-        int temp = arr.get(i);
-        arr.set(i, arr.get(j));
-        arr.set(j, temp);
+        int temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
     }
 }
+
+
+//{ Driver Code Starts.
+// } Driver Code Ends
