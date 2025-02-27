@@ -1,66 +1,63 @@
 //{ Driver Code Starts
-//Initial Template for Java
+// Initial Template for Java
 
-//Initial Template for Java
+// Initial Template for Java
 
-import java.util.*;
-import java.lang.*;
 import java.io.*;
+import java.lang.*;
+import java.util.*;
 
 class GFG {
-	public static void main(String[] args) throws IOException
-	{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine().trim());
-        while(t-->0)
-        {
-            StringTokenizer stt = new StringTokenizer(br.readLine());
-            
-            long n = Long.parseLong(stt.nextToken());
-            long m = Long.parseLong(stt.nextToken());
-            long a1[] = new long[(int)(n)];
-            long a2[] = new long[(int)(m)];
-            
-            
-            String inputLine[] = br.readLine().trim().split(" ");
-            for (int i = 0; i < n; i++) {
-                a1[i] = Long.parseLong(inputLine[i]);
+    public static void main(String[] args) throws IOException {
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine().trim());
+        while (t-- > 0) {
+            String line = read.readLine().trim();
+            String[] numsStr = line.split(" ");
+            int[] a = new int[numsStr.length];
+            for (int i = 0; i < numsStr.length; i++) {
+                a[i] = Integer.parseInt(numsStr[i]);
             }
-            String inputLine1[] = br.readLine().trim().split(" ");
-            for (int i = 0; i < m; i++) {
-                a2[i] = Long.parseLong(inputLine1[i]);
+            line = read.readLine().trim();
+            numsStr = line.split(" ");
+            int[] b = new int[numsStr.length];
+            for (int i = 0; i < numsStr.length; i++) {
+                b[i] = Integer.parseInt(numsStr[i]);
             }
-            
-            
-            Compute obj = new Compute();
-            System.out.println(obj.isSubset( a1, a2, n, m));
-            
+            Solution ob = new Solution();
+            if (ob.isSubset(a, b))
+                System.out.println("true");
+            else
+                System.out.println("false");
+            System.out.println("~");
         }
-	}
+    }
 }
 
 // } Driver Code Ends
 
 
-//User function Template for Java
 
-
-class Compute {
-    public String isSubset( long a1[], long a2[], long n, long m) {
-        ArrayList<Long> subset = new ArrayList();
-        for(int i = 0; i < a1.length; i++)
+class Solution {
+    public boolean isSubset(int a[], int b[]) {
+        // Your code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < a.length; i++)
         {
-            subset.add(a1[i]);
+            map.put(a[i], map.getOrDefault(a[i], 0) + 1);
         }
-        for(int i = 0; i < a2.length; i++)
+        
+        for(int i = 0; i < b.length; i++)
         {
-            if(subset.contains(a2[i]))
+            if(map.containsKey(b[i]) && map.get(b[i]) > 0)
             {
-                subset.remove(a2[i]);
+                map.put(b[i], map.get(b[i]) - 1);
             }
             else
-                return "No";
+            {
+                return false;
+            }
         }
-        return "Yes";
+        return true;
     }
 }
