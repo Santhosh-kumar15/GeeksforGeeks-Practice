@@ -1,62 +1,73 @@
 //{ Driver Code Starts
+import java.io.*;
 import java.util.*;
 
-class GFG
-{
-	public static void main(String args[])
-	{
-		Scanner sc = new Scanner(System.in);
-		int t = sc.nextInt();
-		while(t>0)
-		{
-			int n = sc.nextInt();
-			int arr[] = new int[n]; 
-			for(int i=0;i<n;i++)
-			{
-				arr[i] = sc.nextInt();
-			}
-		
-			Solution obj = new Solution();
-			obj.selectionSort(arr, n);
-			
-			for(int i=0;i<n;i++)
-		    	System.out.print(arr[i]+" ");
-		    System.out.println();
-			t--;
-		}
-		
-	}
+class IntArray {
+    public static int[] input(BufferedReader br, int n) throws IOException {
+        String[] s = br.readLine().trim().split(" ");
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) a[i] = Integer.parseInt(s[i]);
+
+        return a;
+    }
+
+    public static void print(int[] a) {
+        for (int e : a) System.out.print(e + " ");
+        System.out.println();
+    }
+
+    public static void print(ArrayList<Integer> a) {
+        for (int e : a) System.out.print(e + " ");
+        System.out.println();
+    }
+}
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+
+        while (t-- > 0) {
+            String arr[] = br.readLine().split(" ");
+            int a[] = new int[arr.length];
+
+            for (int i = 0; i < arr.length; i++) {
+                a[i] = Integer.parseInt(arr[i]);
+            }
+
+            Solution obj = new Solution();
+            obj.selectionSort(a);
+
+            IntArray.print(a);
+            System.out.println("~");
+        }
+    }
 }
 
 // } Driver Code Ends
 
 
-class Solution
-{
-	int  select(int arr[], int i)
-	{
-        // code here such that selectionSort() sorts arr[]
-        int min = i;
-        for(int j = i; j <= arr.length-1; j++)
+class Solution {
+    void selectionSort(int[] arr) {
+        // code here
+        int n = arr.length;
+        for(int i = 0; i <= n - 2; i++)
         {
-            if(arr[j] < arr[min])
+            int mini = i;
+            for(int j = i; j <= n - 1; j++)
             {
-                min = j;
+                if(arr[j] < arr[mini])
+                {
+                    mini = j;
+                }
             }
+            swap(arr, mini, i);
         }
-        return min;
-	}
-	
-	void selectionSort(int arr[], int n)
-	{
-	    //code here
-	    int mini;
-	    for(int i = 0; i <= n-2; i++)
-	    {
-	        mini = select(arr, i);
-	        int temp = arr[mini];
-	        arr[mini] = arr[i];
-	        arr[i] = temp;
-	    }
-	}
+    }
+    public static void swap(int[] arr, int mini, int i)
+    {
+        int temp = arr[mini];
+        arr[mini] = arr[i];
+        arr[i] = temp;
+    }
 }
