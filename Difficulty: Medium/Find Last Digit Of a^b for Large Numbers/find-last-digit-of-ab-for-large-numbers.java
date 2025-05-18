@@ -24,22 +24,26 @@ class GFG {
 // } Driver Code Ends
 
 
-//User function Template for Java
+// User function Template for Java
 
 class Solution {
     static int getLastDigit(String a, String b) {
         // code here
         int num1 = a.charAt(a.length() - 1) - '0';
+        
         if(b.equals("0"))
             return 1;
+            
         int num2 = 0;
         for(int i = 0; i < b.length(); i++)
         {
-            num2 = (num2 * 10 +( b.charAt(i) - '0')) % 4;
+            num2 = (num2 * 10 + (b.charAt(i) - '0')) % 4;
         }
         if(num2 == 0)
             num2 = 4;
-        int result = (int) Math.pow(num1, num2) % 10;
+            
+        int result = (int)Math.pow(num1, num2) % 10;
         return result;
+            
     }
 };
