@@ -1,47 +1,50 @@
 //{ Driver Code Starts
-//Initial Template for Java
+// Initial Template for Java
 
 import java.io.*;
 import java.util.*;
 
 class GFG {
     public static void main(String args[]) throws IOException {
-        BufferedReader read =
-            new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(read.readLine());
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine()); // Read the number of test cases
         while (t-- > 0) {
-            long N = Long.parseLong(read.readLine());
+            int N = Integer.parseInt(read.readLine()); // Parse input as an integer
 
             Solution ob = new Solution();
-            System.out.println(ob.isPerfectNumber(N));
-        
-System.out.println("~");
-}
+            if (ob.isPerfectNumber(N))
+                System.out.println("true");
+            else
+                System.out.println("false");
+            System.out.println("~");
+        }
     }
 }
 // } Driver Code Ends
 
 
-//User function Template for Java
+// User function Template for Java
 
 class Solution {
-    static int isPerfectNumber(long N) {
+    static boolean isPerfectNumber(int n) {
         // code here
-        long sum = 0;
-        for(int i = 1; i < Math.sqrt(N); i++)
+        if(n == 1)
+            return false;
+        int sum = 1;
+        for(int i = 2; i <= Math.sqrt(n); i++)
         {
-            if(N % i == 0)
+            if(n % i == 0)
             {
                 sum += i;
-                if(N != N/i)
+                if(i != n / i)
                 {
-                    sum += N/i;
+                    sum += n / i;
                 }
             }
         }
-        if(N == sum)
-            return 1;
-        else
-            return 0;
+        if(sum == n)
+            return true;
+            
+        return false;
     }
 };
